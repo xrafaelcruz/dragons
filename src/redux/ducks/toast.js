@@ -12,7 +12,7 @@ export const hideToast = () => ({ type: Types.HIDE, payload: {} });
 const INITIAL_STATE = {
   show: false,
   message: '',
-  status: 'success'
+  status: ''
 };
 
 export default function reducer(state = INITIAL_STATE, action) {

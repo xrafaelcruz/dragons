@@ -10,15 +10,14 @@ export function* login(action) {
   try {
     if (action.payload.username === 'adm' && action.payload.password === '123') {
       const user = {
-        name: 'ADM',
-        image: ''
+        name: 'Administrator'
       };
 
       yield put(showToast('Login success', 'success'));
       yield put(loginResult(user));
     } else {
       // eslint-disable-next-line
-      throw 'Login invalido';
+      throw 'Login failed';
     }
   } catch (e) {
     yield put(showToast(e, 'error'));
