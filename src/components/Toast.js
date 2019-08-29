@@ -6,11 +6,19 @@ import ToastStyle from 'styles/toast';
 import { hideToast } from 'redux/ducks/toast';
 
 function Toast({ toast, hideToast }) {
+  let activeShow = false;
+
   useEffect(() => {
-    if (toast.show) {
-      setTimeout(hideToast, 3000);
+    if (toast.show && !activeShow) {
+      // eslint-disable-next-line
+      activeShow = true;
+
+      setTimeout(() => {
+        hideToast();
+        activeShow = false;
+      }, 3000);
     }
-  }, [toast.show, hideToast]);
+  }, [toast.show, hideToast, activeShow]);
 
   return (
     <ToastStyle data-component="toast" show={toast.show} status={toast.status}>

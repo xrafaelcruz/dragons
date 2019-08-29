@@ -1,4 +1,14 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, keyframes } from 'styled-components';
+
+const show = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -6,6 +16,11 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     outline: 0;
     padding: 0;
+  }
+
+  [data-page],
+  [data-component] {
+    animation: ${show} 1.2s;
   }
 
   html,

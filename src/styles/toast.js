@@ -16,9 +16,9 @@ export default styled.div`
     color: #fff;
     background: ${props => {
       if (props.status === 'success') {
-        return '#22d66d';
+        return '#7ca566';
       } else if (props.status === 'error') {
-        return '#e6224b';
+        return '#b55353';
       }
     }};
     border-radius: 4px;
