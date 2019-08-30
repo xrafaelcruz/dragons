@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 
 import { ButtonMedium } from 'styles/button';
-import DragonListStyle, { BorderTop, BorderBottom, Footer, ButtonsWrapper, Button } from 'styles/dragonList';
+import DragonListStyle, { BorderTop, BorderBottom, Footer, ButtonsWrapper } from 'styles/dragonList';
 
 import logo from 'assets/dragon.png';
 

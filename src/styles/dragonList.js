@@ -11,6 +11,18 @@ export default styled.div`
   position: relative;
   width: 100%;
 
+  @media (max-width: 1080px) {
+    margin: 0 0 40px;
+    max-width: 500px;
+    padding: 15px 0;
+  }
+
+  @media (max-width: 540px) {
+    margin: 0 0 20px;
+    max-width: 300px;
+    padding: 8px 0;
+  }
+
   ul {
     background: transparent url(${borderBg});
     background-repeat: repeat-y;
@@ -18,11 +30,21 @@ export default styled.div`
     background-size: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 32px;
+    grid-gap: 48px;
     list-style: none;
     padding: 32px 64px;
     position: relative;
     z-index: 1;
+
+    @media (max-width: 1080px) {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 32px 48px;
+    }
+
+    @media (max-width: 540px) {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 16px 32px;
+    }
   }
 
   li {
@@ -34,8 +56,13 @@ export default styled.div`
 
   img {
     height: auto;
-    margin: 32px auto;
-    width: 70px;
+    margin: 40px auto 20px;
+    width: 60px;
+
+    @media (max-width: 540px) {
+      margin: 16px auto;
+      width: 50px;
+    }
   }
 `;
 
@@ -45,12 +72,16 @@ export const BorderTop = styled.div`
     background-position: 50% 0;
     background-size: 100%;
     content: ' ';
-    height: 75px;
+    height: 65px;
     left: 0;
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 2;
+
+    @media (max-width: 540px) {
+      height: 30px;
+    }
   }
 
   &::before {
@@ -63,6 +94,14 @@ export const BorderTop = styled.div`
     right: 0;
     width: 93%;
     z-index: 2;
+
+    @media (max-width: 1080px) {
+      height: 55px;
+    }
+
+    @media (max-width: 540px) {
+      height: 20px;
+    }
   }
 `;
 
@@ -76,6 +115,16 @@ export const BorderBottom = styled.div`
     left: 0;
     position: absolute;
     width: 100%;
+
+    @media (max-width: 1080px) {
+      background: transparent url(${borderSprite}) no-repeat 50% -170px;
+      background-size: 100%;
+    }
+
+    @media (max-width: 540px) {
+      background: transparent url(${borderSprite}) no-repeat 50% -70px;
+      background-size: 100%;
+    }
   }
 `;
 
@@ -92,6 +141,7 @@ export const Footer = styled.footer`
     color: #333;
     font-size: 16px;
     font-family: 'MedievalSharp', cursive;
+    text-transform: capitalize;
   }
 
   p {
@@ -100,6 +150,7 @@ export const Footer = styled.footer`
     line-height: 20px;
     margin-top: 5px;
     font-family: 'MedievalSharp', cursive;
+    text-transform: capitalize;
   }
 `;
 

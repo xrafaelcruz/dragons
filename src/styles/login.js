@@ -23,6 +23,7 @@ export const Wrapper = styled.div`
 
     img {
       margin: 0 0 40px;
+      width: 60px;
     }
   }
 `;
