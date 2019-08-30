@@ -13,3 +13,10 @@ export const H1 = styled.h1`
     margin: 32px 0;
   }
 `;
+
+export const H2 = styled.h2`
+  font-family: 'MedievalSharp', cursive;
+  color: #000;
+  margin: 16px 0;
+  text-align: center;
+`;

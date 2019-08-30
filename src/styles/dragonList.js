@@ -158,6 +158,6 @@ export const ButtonsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
-  margin-top: 10px;
-  width: 100%;
+  margin: 10px auto;
+  width: ${props => (props.width ? props.width : '100%')};
 `;

@@ -8,7 +8,7 @@ import { showToast } from 'redux/ducks/toast';
 // SIMULACAO DE LOGIN
 export function* login(action) {
   try {
-    if (action.payload.username === 'adm' && action.payload.password === '123') {
+    if (action.payload.username.toLowerCase() === 'adm' && action.payload.password === '123') {
       const user = {
         name: 'Administrator'
       };
