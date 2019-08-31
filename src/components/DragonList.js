@@ -8,9 +8,9 @@ import logo from 'assets/images/dragon.png';
 import { H2 } from 'styles/heading';
 import { ButtonMedium } from 'styles/button';
 import DragonListStyle, { Footer, ButtonsWrapper } from 'styles/dragonList';
-import Border, { Background, BorderTop, BorderBottom } from 'styles/border';
 
 import Modal from 'components/Modal';
+import Border from 'components/Border';
 
 import { getDragonList, deleteDragon } from 'redux/ducks/dragon';
 
@@ -45,30 +45,26 @@ function DragonList(props) {
     return (
       <DragonListStyle data-component="dragon-list">
         <Border>
-          <BorderTop />
-          <Background>
-            <ul>
-              {props.dragonList.map((dragon, i) => (
-                <li key={i}>
-                  <img src={logo} alt="Dragon Logo" />
-                  <Footer>
-                    <strong>{dragon.name}</strong>
-                    <p>{dragon.type} dragon</p>
-                  </Footer>
-                  <ButtonsWrapper>
-                    <ButtonMedium type="button" onClick={() => handleOpenModal(dragon)} color={'#34332c'}>
-                      Delete
-                    </ButtonMedium>
+          <ul>
+            {props.dragonList.map((dragon, i) => (
+              <li key={i}>
+                <img src={logo} alt="Dragon Logo" />
+                <Footer>
+                  <strong>{dragon.name}</strong>
+                  <p>{dragon.type} dragon</p>
+                </Footer>
+                <ButtonsWrapper>
+                  <ButtonMedium type="button" onClick={() => handleOpenModal(dragon)} color={'#34332c'}>
+                    Delete
+                  </ButtonMedium>
 
-                    <ButtonMedium type="button" onClick={() => handleUpdateDragon(dragon.id)} color={'#90897f'}>
-                      Update
-                    </ButtonMedium>
-                  </ButtonsWrapper>
-                </li>
-              ))}
-            </ul>
-          </Background>
-          <BorderBottom />
+                  <ButtonMedium type="button" onClick={() => handleUpdateDragon(dragon.id)} color={'#90897f'}>
+                    Update
+                  </ButtonMedium>
+                </ButtonsWrapper>
+              </li>
+            ))}
+          </ul>
         </Border>
 
         {selectedDragon && (

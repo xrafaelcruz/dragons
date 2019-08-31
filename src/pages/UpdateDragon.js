@@ -6,7 +6,7 @@ import DragonForm from 'components/DragonForm';
 
 export default function UpdateDragon() {
   return (
-    <Page data-page="home" x="center">
+    <Page data-page="update-dragon" x="center">
       <H1>Update Dragon</H1>
       <DragonForm update />
     </Page>

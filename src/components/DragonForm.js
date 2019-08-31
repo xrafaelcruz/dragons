@@ -5,17 +5,21 @@ import { bindActionCreators, compose } from 'redux';
 
 import DragonForm, { Form } from 'styles/dragonForm';
 import Button from 'styles/button';
-import { Input, Label } from 'styles/form';
-import Border, { Background, BorderTop, BorderBottom } from 'styles/border';
 
-import { getDragon } from 'redux/ducks/dragon';
+import { getDragon, updateDragon } from 'redux/ducks/dragon';
+
+import Border from 'components/Border';
+import Input from 'components/Input';
 
 function DragonList(props) {
+  const [submited, setSubmited] = useState(false);
   const [name, setName] = useState('');
   const [type, setType] = useState('');
 
   useEffect(() => {
-    props.getDragon(props.match.params.id);
+    if (props.match.params.id) {
+      props.getDragon(props.match.params.id);
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -28,24 +32,52 @@ function DragonList(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    setSubmited(true);
+
+    if (name && type) {
+      setSubmited(false);
+
+      const newDragon = {
+        ...props.dragon,
+        name,
+        type
+      };
+
+      if (props.update) {
+        props.updateDragon(newDragon);
+      } else {
+      }
+    } else {
+    }
   }
 
   return (
     <DragonForm data-component="dragon-list">
       <Border>
-        <BorderTop />
-        <Background>
-          <Form onSubmit={handleSubmit}>
-            <Label>Name</Label>
-            <Input type="text" value={name} onChange={e => setName(e.target.value)} />
+        <Form onSubmit={handleSubmit}>
+          <Input
+            label="Name"
+            input={{
+              value: name,
+              type: 'text',
+              onChange: e => setName(e.target.value)
+            }}
+            error={submited && !name ? 'required' : ''}
+          />
 
-            <Label>Type</Label>
-            <Input type="text" value={type} onChange={e => setType(e.target.value)} />
+          <Input
+            label="Type"
+            input={{
+              value: type,
+              type: 'text',
+              onChange: e => setType(e.target.value)
+            }}
+            error={submited && !type ? 'required' : ''}
+          />
 
-            <Button type="submit">Submit</Button>
-          </Form>
-        </Background>
-        <BorderBottom />
+          <Button type="submit">Submit</Button>
+        </Form>
       </Border>
     </DragonForm>
   );
@@ -55,7 +87,7 @@ const mapStateToProps = states => ({
   dragon: states.dragon.dragon
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getDragon }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getDragon, updateDragon }, dispatch);
 
 export default compose(
   connect(

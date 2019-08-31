@@ -13,10 +13,10 @@ export const Form = styled.form`
   width: 100%;
 
   @media (max-width: 1080px) {
-    padding: 60px 32px 30px;
+    padding: 60px 32px 50px;
   }
 
   @media (max-width: 540px) {
-    padding: 40px 32px 15px;
+    padding: 40px 32px 20px;
   }
 `;
