@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 
-import logo from 'assets/dragon.png';
+import logo from 'assets/images/dragon.png';
 
 import { H2 } from 'styles/heading';
 import { ButtonMedium } from 'styles/button';

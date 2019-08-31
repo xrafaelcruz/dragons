@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import borderSprite from 'assets/borderSprite.png';
-import borderTopBg from 'assets/border-top-bg.jpg';
-import borderBg from 'assets/border-bg.png';
+import borderSprite from 'assets/images/borderSprite.png';
+import borderTopBg from 'assets/images/border-top-bg.jpg';
+import borderBg from 'assets/images/border-bg.png';
 
 export default styled.div`
   margin: 16px 0 80px;

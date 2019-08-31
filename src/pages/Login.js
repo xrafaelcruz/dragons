@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import logo from 'assets/dragon.png';
+import logo from 'assets/images/dragon.png';
 
 import Page from 'styles/page';
 import Button from 'styles/button';
