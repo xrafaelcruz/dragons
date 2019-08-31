@@ -9,3 +9,10 @@ export const Input = styled.input`
   margin-bottom: 10px;
   padding: 0 20px;
 `;
+
+export const Label = styled.label`
+  color: #666;
+  font-family: 'MedievalSharp', cursive;
+  font-size: 16px;
+  margin: 10px 0 5px;
+`;

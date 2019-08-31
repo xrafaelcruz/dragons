@@ -21,7 +21,7 @@ function Login(props) {
   }
 
   return (
-    <Page data-page="login" center>
+    <Page data-page="login" x="center" y="center">
       <Wrapper>
         <img src={logo} className="App-logo" alt="logo" />
 

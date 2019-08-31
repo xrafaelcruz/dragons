@@ -1,5 +1,8 @@
 // Action Types
 export const Types = {
+  GET_DRAGON: 'dragon/GET_DRAGON',
+  GET_DRAGON_RESULT: 'dragon/GET_DRAGON_RESULT',
+
   GET_DRAGON_LIST: 'dragon/GET_DRAGON_LIST',
   GET_DRAGON_LIST_RESULT: 'dragon/GET_DRAGON_LIST_RESULT',
 
@@ -8,6 +11,12 @@ export const Types = {
 };
 
 // Action Creators
+export const getDragon = id => ({ type: Types.GET_DRAGON, payload: { id } });
+export const getDragonResult = dragon => ({
+  type: Types.GET_DRAGON_RESULT,
+  payload: { dragon }
+});
+
 export const getDragonList = () => ({ type: Types.GET_DRAGON_LIST, payload: {} });
 export const getDragonListResult = list => ({
   type: Types.GET_DRAGON_LIST_RESULT,
@@ -23,11 +32,22 @@ export const deleteDragonResult = list => ({
 // Reducer
 const INITIAL_STATE = {
   loading: false,
-  list: null
+  list: null,
+  dragon: null
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case Types.GET_DRAGON:
+      return { ...state, loading: true };
+
+    case Types.GET_DRAGON_RESULT:
+      return {
+        ...state,
+        loading: false,
+        dragon: action.payload.dragon
+      };
+
     case Types.GET_DRAGON_LIST:
       return { ...state, loading: true };
 

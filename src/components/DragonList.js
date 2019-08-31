@@ -7,7 +7,8 @@ import logo from 'assets/images/dragon.png';
 
 import { H2 } from 'styles/heading';
 import { ButtonMedium } from 'styles/button';
-import DragonListStyle, { BorderTop, BorderBottom, Footer, ButtonsWrapper } from 'styles/dragonList';
+import DragonListStyle, { Footer, ButtonsWrapper } from 'styles/dragonList';
+import Border, { Background, BorderTop, BorderBottom } from 'styles/border';
 
 import Modal from 'components/Modal';
 
@@ -27,7 +28,9 @@ function DragonList(props) {
     setOpenedModal(false);
   }
 
-  function handleUpdateDragon(id) {}
+  function handleUpdateDragon(id) {
+    props.history.push(`/dragon/${id}`);
+  }
 
   function handleOpenModal(dragon) {
     setSelectedDragon(dragon);
@@ -41,28 +44,32 @@ function DragonList(props) {
   if (props.dragonList) {
     return (
       <DragonListStyle data-component="dragon-list">
-        <BorderTop />
-        <ul>
-          {props.dragonList.map((dragon, i) => (
-            <li key={i}>
-              <img src={logo} alt="Dragon Logo" />
-              <Footer>
-                <strong>{dragon.name}</strong>
-                <p>{dragon.type} dragon</p>
-              </Footer>
-              <ButtonsWrapper>
-                <ButtonMedium type="button" onClick={() => handleOpenModal(dragon)} color={'#34332c'}>
-                  Delete
-                </ButtonMedium>
+        <Border>
+          <BorderTop />
+          <Background>
+            <ul>
+              {props.dragonList.map((dragon, i) => (
+                <li key={i}>
+                  <img src={logo} alt="Dragon Logo" />
+                  <Footer>
+                    <strong>{dragon.name}</strong>
+                    <p>{dragon.type} dragon</p>
+                  </Footer>
+                  <ButtonsWrapper>
+                    <ButtonMedium type="button" onClick={() => handleOpenModal(dragon)} color={'#34332c'}>
+                      Delete
+                    </ButtonMedium>
 
-                <ButtonMedium type="button" onClick={() => handleUpdateDragon(dragon.id)} color={'#90897f'}>
-                  Update
-                </ButtonMedium>
-              </ButtonsWrapper>
-            </li>
-          ))}
-        </ul>
-        <BorderBottom />
+                    <ButtonMedium type="button" onClick={() => handleUpdateDragon(dragon.id)} color={'#90897f'}>
+                      Update
+                    </ButtonMedium>
+                  </ButtonsWrapper>
+                </li>
+              ))}
+            </ul>
+          </Background>
+          <BorderBottom />
+        </Border>
 
         {selectedDragon && (
           <Modal opened={openedModal} closeEvent={handleCloseModal}>

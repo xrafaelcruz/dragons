@@ -6,8 +6,18 @@ import api from 'services/api';
 import { orderByName } from 'assets/scripts/order';
 
 // Actions
-import { Types, getDragonListResult, deleteDragonResult } from 'redux/ducks/dragon';
+import { Types, getDragonResult, getDragonListResult, deleteDragonResult } from 'redux/ducks/dragon';
 import { showToast } from 'redux/ducks/toast';
+
+export function* getDragon(action) {
+  try {
+    const { data } = yield call(api.get, `dragon/${action.payload.id}`);
+    yield put(getDragonResult(data));
+  } catch (e) {
+    yield put(showToast(e, 'error'));
+    yield put(getDragonResult());
+  }
+}
 
 export function* getDragonList(action) {
   try {
@@ -31,6 +41,10 @@ export function* deleteDragon(action) {
   }
 }
 
-const saga = [takeLatest(Types.GET_DRAGON_LIST, getDragonList), takeLatest(Types.DELETE_DRAGON, deleteDragon)];
+const saga = [
+  takeLatest(Types.GET_DRAGON, getDragon),
+  takeLatest(Types.GET_DRAGON_LIST, getDragonList),
+  takeLatest(Types.DELETE_DRAGON, deleteDragon)
+];
 
 export default saga;
