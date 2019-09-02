@@ -41,16 +41,10 @@ function DragonList(props) {
     if (name && type) {
       setSubmited(false);
 
-      const newDragon = {
-        ...props.dragon,
-        name,
-        type
-      };
-
       if (props.update) {
-        props.updateDragon(newDragon);
+        props.updateDragon({ ...props.dragon, name, type });
       } else {
-        props.createDragon(newDragon);
+        props.createDragon({ name, type});
       }
     }
   }
@@ -79,7 +73,7 @@ function DragonList(props) {
             error={submited && !type ? 'required' : ''}
           />
 
-          { props.dragon &&
+          { props.update &&
             <Input
               label="Created At"
               input={{
