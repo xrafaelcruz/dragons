@@ -6,10 +6,11 @@ import logo from 'assets/images/dragon.png';
 
 import Page from 'styles/page';
 import Button from 'styles/button';
-import { Input } from 'styles/form';
 import { Form, Wrapper } from 'styles/login';
 
 import { login } from 'redux/ducks/login';
+
+import Input from 'components/Input';
 
 function Login(props) {
   const [username, setUsername] = useState('');
@@ -26,8 +27,24 @@ function Login(props) {
         <img src={logo} className="App-logo" alt="logo" />
 
         <Form onSubmit={handleSubmit}>
-          <Input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
-          <Input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+          <Input
+            input={{
+              value: username,
+              type: 'text',
+              placeholder: 'Username',
+              onChange: e => setUsername(e.target.value)
+            }}
+          />
+
+          <Input
+            input={{
+              value: password,
+              type: 'password',
+              placeholder: 'Username',
+              onChange: e => setPassword(e.target.value)
+            }}
+          />
+
           <Button type="submit">Login</Button>
         </Form>
       </Wrapper>

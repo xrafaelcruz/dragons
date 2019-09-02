@@ -7,13 +7,15 @@ import store from 'redux/store';
 import GlobalStyle from 'styles/global';
 
 import Toast from 'components/Toast';
+import Header from 'components/Header';
 
 function App() {
   return (
     <Provider store={store}>
       <GlobalStyle />
-      <Routes />
       <Toast />
+      <Header />
+      <Routes />
     </Provider>
   );
 }

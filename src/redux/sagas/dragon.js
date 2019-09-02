@@ -11,7 +11,8 @@ import {
   getDragonResult,
   getDragonListResult,
   deleteDragonResult,
-  updateDragonResult
+  updateDragonResult,
+  createDragonResult
 } from 'redux/ducks/dragon';
 import { showToast } from 'redux/ducks/toast';
 import { setNewUrl } from 'redux/ducks/route';
@@ -59,11 +60,23 @@ export function* updateDragon(action) {
   }
 }
 
+export function* createDragon(action) {
+  try {
+    yield call(api.post, 'dragon', action.payload.dragon);
+    yield put(setNewUrl('/dragons'));
+    yield put(createDragonResult());
+  } catch (e) {
+    yield put(showToast('Error create the dragon', 'error'));
+    yield put(createDragonResult());
+  }
+}
+
 const saga = [
   takeLatest(Types.GET_DRAGON, getDragon),
   takeLatest(Types.GET_DRAGON_LIST, getDragonList),
   takeLatest(Types.DELETE_DRAGON, deleteDragon),
-  takeLatest(Types.UPDATE_DRAGON, updateDragon)
+  takeLatest(Types.UPDATE_DRAGON, updateDragon),
+  takeLatest(Types.CREATE_DRAGON, createDragon)
 ];
 
 export default saga;

@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import Login from 'pages/Login';
 import Dragons from 'pages/Dragons';
+import NewDragon from 'pages/NewDragon';
 import UpdateDragon from 'pages/UpdateDragon';
 
 import { setNewUrl } from 'redux/ducks/route';
@@ -25,6 +26,7 @@ const Routes = ({ isAuthenticated, newUrl, setNewUrl }) => {
       <Switch>
         {!isAuthenticated && <Route path="/login" component={Login} />}
         {isAuthenticated && <Route exact path="/dragons" component={Dragons} />}
+        {isAuthenticated && <Route path="/new-dragon" component={NewDragon} />}
         {isAuthenticated && <Route path="/dragon/:id" component={UpdateDragon} />}
 
         {!isAuthenticated && <Redirect from="*" to="/login" />}

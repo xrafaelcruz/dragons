@@ -5,17 +5,16 @@ const buttonStyles = css`
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
+  transition: all 250ms;
 
   &:hover {
     opacity: 0.8;
     background: #e68122;
-    transition: all 250ms;
   }
 
   &:active {
     opacity: 1;
     background: #e68122;
-    transition: all 250ms;
   }
 `;
 
@@ -35,4 +34,24 @@ export const ButtonMedium = styled.button`
   font-size: 12px;
   padding: 5px;
   width: 100%;
+`;
+
+export const ButtonLink = styled.button`
+  background: transparent;
+  border: 0;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+  transition: all 250ms;
+
+  &:hover {
+    color: #e68122;
+    opacity: 0.8;
+  }
+
+  &:active {
+    color: #e68122;
+    opacity: 1;
+  }
 `;

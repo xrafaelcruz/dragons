@@ -10,7 +10,10 @@ export const Types = {
   DELETE_DRAGON_RESULT: 'dragon/DELETE_DRAGON_RESULT',
 
   UPDATE_DRAGON: 'dragon/UPDATE_DRAGON',
-  UPDATE_DRAGON_RESULT: 'dragon/UPDATE_DRAGON_RESULT'
+  UPDATE_DRAGON_RESULT: 'dragon/UPDATE_DRAGON_RESULT',
+
+  CREATE_DRAGON: 'dragon/CREATE_DRAGON',
+  CREATE_DRAGON_RESULT: 'dragon/CREATE_DRAGON_RESULT'
 };
 
 // Action Creators
@@ -35,6 +38,12 @@ export const deleteDragonResult = list => ({
 export const updateDragon = dragon => ({ type: Types.UPDATE_DRAGON, payload: { dragon } });
 export const updateDragonResult = () => ({
   type: Types.UPDATE_DRAGON_RESULT,
+  payload: {}
+});
+
+export const createDragon = dragon => ({ type: Types.CREATE_DRAGON, payload: { dragon } });
+export const createDragonResult = () => ({
+  type: Types.CREATE_DRAGON_RESULT,
   payload: {}
 });
 
@@ -85,6 +94,15 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         dragon: null
+      };
+
+    case Types.CREATE_DRAGON:
+      return { ...state, loading: true };
+
+    case Types.CREATE_DRAGON_RESULT:
+      return {
+        ...state,
+        loading: false
       };
 
     default:

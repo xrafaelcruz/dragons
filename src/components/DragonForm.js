@@ -6,7 +6,7 @@ import { bindActionCreators, compose } from 'redux';
 import DragonForm, { Form } from 'styles/dragonForm';
 import Button from 'styles/button';
 
-import { getDragon, updateDragon } from 'redux/ducks/dragon';
+import { getDragon, updateDragon, createDragon } from 'redux/ducks/dragon';
 
 import Border from 'components/Border';
 import Input from 'components/Input';
@@ -24,11 +24,11 @@ function DragonList(props) {
   }, []);
 
   useEffect(() => {
-    if (props.dragon) {
+    if (props.dragon && props.update) {
       setName(props.dragon.name);
       setType(props.dragon.type);
     }
-  }, [props.dragon]);
+  }, [props.dragon, props.update]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -47,8 +47,8 @@ function DragonList(props) {
       if (props.update) {
         props.updateDragon(newDragon);
       } else {
+        props.createDragon(newDragon);
       }
-    } else {
     }
   }
 
@@ -87,7 +87,7 @@ const mapStateToProps = states => ({
   dragon: states.dragon.dragon
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getDragon, updateDragon }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getDragon, updateDragon, createDragon }, dispatch);
 
 export default compose(
   connect(
