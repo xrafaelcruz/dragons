@@ -1,5 +1,3 @@
-##Dragon Manager
-
 ### Credentials
 
 **Username:** adm

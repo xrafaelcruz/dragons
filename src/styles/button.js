@@ -8,12 +8,12 @@ const buttonStyles = css`
   transition: all 250ms;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 1;
     background: #e68122;
   }
 
   &:active {
-    opacity: 1;
+    opacity: .8;
     background: #e68122;
   }
 `;
@@ -47,11 +47,11 @@ export const ButtonLink = styled.button`
 
   &:hover {
     color: #e68122;
-    opacity: 0.8;
+    opacity: 1;
   }
 
   &:active {
     color: #e68122;
-    opacity: 1;
+    opacity: .8;
   }
 `;

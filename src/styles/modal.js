@@ -26,7 +26,7 @@ export const ModalWrapper = styled.div`
 export const ButtonClose = styled.button`
   border: 0;
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 1;
   padding: 0;
   position: absolute;
   right: 8px;
@@ -34,7 +34,7 @@ export const ButtonClose = styled.button`
   transition: all 0.5s;
 
   &:hover {
-    opacity: 1;
+    opacity: .8;
   }
 
   i {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
+import moment from 'moment'
 
 import DragonForm, { Form } from 'styles/dragonForm';
 import Button from 'styles/button';
@@ -15,6 +16,7 @@ function DragonList(props) {
   const [submited, setSubmited] = useState(false);
   const [name, setName] = useState('');
   const [type, setType] = useState('');
+  const [createdAt, setCreatedAt] = useState('');
 
   useEffect(() => {
     if (props.match.params.id) {
@@ -27,6 +29,7 @@ function DragonList(props) {
     if (props.dragon && props.update) {
       setName(props.dragon.name);
       setType(props.dragon.type);
+      setCreatedAt(moment(props.dragon.createdAt).calendar());
     }
   }, [props.dragon, props.update]);
 
@@ -75,6 +78,17 @@ function DragonList(props) {
             }}
             error={submited && !type ? 'required' : ''}
           />
+
+          { props.dragon &&
+            <Input
+              label="Created At"
+              input={{
+                value: createdAt,
+                type: 'text',
+                disabled: true
+              }}
+            />
+          }
 
           <Button type="submit">Submit</Button>
         </Form>
